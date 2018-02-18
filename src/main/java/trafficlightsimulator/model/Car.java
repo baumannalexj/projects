@@ -8,7 +8,7 @@ package trafficlightsimulator.model;
  */
 public class Car implements Agent {
 	private Road currentRoad;
-	private double length = Math.max( Math.round(Math.random()*100)%MP.maxCarLength, MP.minCarLength)   ;//MP.carLength; MP.carLength will be the max car length
+	private double length = Math.max( Math.round(Math.random()*100)% ModelParameters.maxCarLength, ModelParameters.minCarLength)   ;//ModelParameters.carLength; ModelParameters.carLength will be the max car length
 	private java.awt.Color color = new java.awt.Color((int)Math.ceil(Math.random()*255),(int)Math.ceil(Math.random()*255),(int)Math.ceil(Math.random()*255));
 
 	Car( Road road) {this.currentRoad = road; } // Created only by this package
@@ -19,17 +19,17 @@ public class Car implements Agent {
 	private int  idleSpeed = 1;
 
 	private double position = 0;
-	//	private double velocity = idleSpeed + (int) Math.ceil(Math.random() * MP.maxVelocity); // this was velocity first
+	//	private double velocity = idleSpeed + (int) Math.ceil(Math.random() * ModelParameters.maxVelocity); // this was velocity first
 
-	private double maxVelocity = Math.max( ((Math.random()*100)%MP.maxCarVelocity), MP.minCarVelocity);//idleSpeed + (int) Math.ceil(Math.random() * MP.maxVelocity); // this was velocity first
+	private double maxVelocity = Math.max( ((Math.random()*100)% ModelParameters.maxCarVelocity), ModelParameters.minCarVelocity);//idleSpeed + (int) Math.ceil(Math.random() * ModelParameters.maxVelocity); // this was velocity first
 	private double currentVelocity = 1;
 	private double acceleration =  0.1;
 
-	private double brakeDistance = MP.brakeDistMin;
-	private double stopDistance = MP.brakeDistMax;
+	private double brakeDistance = ModelParameters.brakeDistMin;
+	private double stopDistance = ModelParameters.brakeDistMax;
 
 	public double getPaintPosition(){
-		return position*MP.roadLength/this.getRoad().length;
+		return position* ModelParameters.roadLength/this.getRoad().length;
 	}
 	public double getLength(){
 		return length;
@@ -80,7 +80,7 @@ public class Car implements Agent {
 
 	//------------------------------------------------------------
 	public void run(double time) {
-		double intersectionGap = 2*1 + MP.carLength +.5*length; //TODO match with VP
+		double intersectionGap = 2*1 + ModelParameters.carLength +.5*length; //TODO match with VP
 		double elementWidth = 1;
 		int thisCarIndex = currentRoad.getCars().indexOf(this);
 		double endOfRoad = currentRoad.length - .5*length; //- gap ;// - 2*gap;
@@ -104,7 +104,7 @@ public class Car implements Agent {
 			else{
 				nextCar = currentRoad.getNextRoad().getLastCar();
 				distToNextCar = (nextCar == null)
-						? 2*MP.roadLength*length
+						? 2* ModelParameters.roadLength*length
 						: -currentVelocity + (currentRoad.length+nextCar.position - .5*nextCar.length) - (position + .5*length);
 
 			}
@@ -165,7 +165,7 @@ public class Car implements Agent {
 
 
 		//   +++++++ //default
-		//					if ((position + velocity) > (MP.roadLength-this.length)){
+		//					if ((position + velocity) > (ModelParameters.roadLength-this.length)){
 		//						position = 0;
 		//					}
 		//				

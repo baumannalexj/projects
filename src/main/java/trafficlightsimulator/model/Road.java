@@ -13,7 +13,7 @@ public class Road {
 	private Road nextRoad; //could be light or sink;	
 	final Light nextLight;
 	Random rand = new Random();
-	final public double length =   Math.max(MP.minRoad, Math.round(Math.random()*100)%MP.maxRoad); //rand.nextDouble()*300 + 200 ;// + MP.roadLength; // need to mess with translator and swingTODO put this in constructor later to be between 200 -- 500
+	final public double length =   Math.max(ModelParameters.minRoad, Math.round(Math.random()*100)% ModelParameters.maxRoad); //rand.nextDouble()*300 + 200 ;// + ModelParameters.roadLength; // need to mess with translator and swingTODO put this in constructor later to be between 200 -- 500
 	
 	Road(Light nextLight, boolean horizontal) { 
 		this.nextLight = nextLight;

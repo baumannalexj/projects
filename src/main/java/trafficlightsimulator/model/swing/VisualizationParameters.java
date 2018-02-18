@@ -1,14 +1,14 @@
-package myproject.model.swing;
+package trafficlightsimulator.model.swing;
 
-import myproject.model.MP;
+import trafficlightsimulator.model.ModelParameters;
 
 /**
  * Static class for visualization parameters.
  */
-class VP {
-	private VP() {}
+class VisualizationParameters {
+	private VisualizationParameters() {}
 	/** Width of model elements, in meters */
-	static double elementWidth = MP.carLength;
+	static double elementWidth = ModelParameters.carLength;
 	/** Gap between model elements, in meters */
 	static double gap = 1; //TODO gap width was 1
 	/** Width of the displayed graphics window, in pixels */

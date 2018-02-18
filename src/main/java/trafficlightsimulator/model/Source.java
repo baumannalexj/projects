@@ -2,7 +2,7 @@ package trafficlightsimulator.model;
 
 public class Source implements Agent{
 	private Road nextRoad;
-	private int generationDelay = (int) Math.max( (int)((Math.random()*100)%MP.maxEntry), MP.minEntry); //min of 2 for now 2 is more frequent creation // 
+	private int generationDelay = (int) Math.max( (int)((Math.random()*100)% ModelParameters.maxEntry), ModelParameters.minEntry); //min of 2 for now 2 is more frequent creation //
 	
 	public Car newCar = null;
 
@@ -20,7 +20,7 @@ public class Source implements Agent{
 		int numCars = nextRoad.getCars().size();
 		
 //		System.out.println(time);
-		if ( ((int)(time*MP.timeStep*100)) % generationDelay == 0){
+		if ( ((int)(time* ModelParameters.timeStep*100)) % generationDelay == 0){
 			if ( numCars <= 0) {
 				nextRoad.getCars().add(newC);
 				 setCar(newC);

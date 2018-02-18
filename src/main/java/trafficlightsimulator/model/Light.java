@@ -8,8 +8,8 @@ import java.util.Random;
 public class Light implements Agent {
 	private boolean green = false;
 	Random rand = new Random();
-	private int  greenTime = (int) Math.max(MP.minGreen,rand.nextInt((int)MP.maxGreen) );
-	private int  yellowTime = (int) Math.max(MP.minYellow,rand.nextInt((int)MP.maxYellow) );
+	private int  greenTime = (int) Math.max(ModelParameters.minGreen,rand.nextInt((int) ModelParameters.maxGreen) );
+	private int  yellowTime = (int) Math.max(ModelParameters.minYellow,rand.nextInt((int) ModelParameters.maxYellow) );
 	private int counter = (int) (rand.nextInt(15))%4;
 	Light() {} // Created only by this package
 	
@@ -38,15 +38,15 @@ public class Light implements Agent {
 	
 	public void run(double time) {
 		if ( getColor(true).equals("green") ){
-			if ( (int)(MP.timeStep * time * 100) % greenTime ==0 )				//(time%40==0) { //TODO how fast the light changes
+			if ( (int)(ModelParameters.timeStep * time * 100) % greenTime ==0 )				//(time%40==0) { //TODO how fast the light changes
 				counter=(counter+1)%4;
 		}
 		else if  (getColor(true).equals("yellow") ){ 
-			if ( (int)(MP.timeStep * time * 100) % yellowTime ==0 )			//(time%40==0) { //TODO how fast the light changes
+			if ( (int)(ModelParameters.timeStep * time * 100) % yellowTime ==0 )			//(time%40==0) { //TODO how fast the light changes
 				counter=(counter+1)%4;
 		}
 		else  { 
-			if ( (int)(MP.timeStep * time * 100) % (greenTime + yellowTime) ==0 )			//(time%40==0) { //TODO how fast the light changes
+			if ( (int)(ModelParameters.timeStep * time * 100) % (greenTime + yellowTime) ==0 )			//(time%40==0) { //TODO how fast the light changes
 				counter=(counter+1)%4;
 		}
 	}

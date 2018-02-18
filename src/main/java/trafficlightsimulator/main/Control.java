@@ -1,7 +1,7 @@
 package trafficlightsimulator.main;
 
 import trafficlightsimulator.model.AnimatorBuilder;
-import trafficlightsimulator.model.MP;
+import trafficlightsimulator.model.ModelParameters;
 import trafficlightsimulator.model.Model;
 import trafficlightsimulator.model.swing.SwingAnimatorBuilder;
 import trafficlightsimulator.ui.UIError;
@@ -164,27 +164,27 @@ public class Control {
 
 					String[] result1 = ui.processForm(getRoadDimensionForm);
 					//					Video v = Data.newVideo(result1[0], Integer.parseInt(result1[1]), result1[2]);
-					MP.numRows  =( Integer.parseInt(result1[0]) <= 0)?   numRows  :  Integer.parseInt(result1[0]);
-					MP.numCols  =( Integer.parseInt(result1[1]) <= 0)?   numCols  :  Integer.parseInt(result1[1]);
-					MP.timeStep  =( Double.parseDouble(result1[2]) <= 0)?   timeStep  :  Double.parseDouble(result1[2]);
-					MP.duration  = ( Double.parseDouble(result1[3]) <= 0)?   duration  :  Double.parseDouble(result1[3]);
-					MP.alternating  = ( Integer.parseInt(result1[4]) == 0)?   false  :  true;
-					MP.minEntry  =( Integer.parseInt(result1[5]) <= 0)?   minEntry  :  Integer.parseInt(result1[5]);
-					MP.maxEntry  =( Integer.parseInt(result1[6]) <= 0)?   maxEntry  :  Integer.parseInt(result1[6]);
-					MP.minRoad   =( Double.parseDouble(result1[7]) <= 0)?   minRoad   :  Double.parseDouble(result1[7]);
-					MP.maxRoad   =( Double.parseDouble(result1[8]) <= 0)?   maxRoad   :  Double.parseDouble(result1[8]);
-					MP.minCarLength   =( Double.parseDouble(result1[9]) <= 0)?   minCarLength   :  Double.parseDouble(result1[9]);
-					MP.maxCarLength   =( Double.parseDouble(result1[10]) <= 0)?   maxCarLength   :  Double.parseDouble(result1[10]);
-					MP.minCarVelocity   =( Double.parseDouble(result1[11]) <= 0)?   minCarVelocity   :  Double.parseDouble(result1[11]);
-					MP.maxCarVelocity   =( Double.parseDouble(result1[12]) <= 0)?   maxCarVelocity   :  Double.parseDouble(result1[12]);
-					MP.stopDistMin   =( Double.parseDouble(result1[13]) <= 0)?   stopDistMin   :  Double.parseDouble(result1[13]);
-					MP.stopDistMax   =( Double.parseDouble(result1[14]) <= 0)?   stopDistMax   :  Double.parseDouble(result1[14]);
-					MP.brakeDistMin   =( Double.parseDouble(result1[15]) <= 0)?   brakeDistMin   :  Double.parseDouble(result1[15]);
-					MP.brakeDistMax   =( Double.parseDouble(result1[16]) <= 0)?   brakeDistMax   :  Double.parseDouble(result1[16]);
-					MP.minGreen   =( Double.parseDouble(result1[17]) <= 0)?   minGreen   :  Double.parseDouble(result1[17]);
-					MP.maxGreen   =( Double.parseDouble(result1[18]) <= 0)?   maxGreen   :  Double.parseDouble(result1[18]);
-					MP.minYellow   =( Double.parseDouble(result1[19]) <= 0)?   minYellow   :  Double.parseDouble(result1[19]);
-					MP.maxYellow   =( Double.parseDouble(result1[20]) <= 0)?   maxYellow   :  Double.parseDouble(result1[20]);
+					ModelParameters.numRows  =( Integer.parseInt(result1[0]) <= 0)?   numRows  :  Integer.parseInt(result1[0]);
+					ModelParameters.numCols  =( Integer.parseInt(result1[1]) <= 0)?   numCols  :  Integer.parseInt(result1[1]);
+					ModelParameters.timeStep  =( Double.parseDouble(result1[2]) <= 0)?   timeStep  :  Double.parseDouble(result1[2]);
+					ModelParameters.duration  = ( Double.parseDouble(result1[3]) <= 0)?   duration  :  Double.parseDouble(result1[3]);
+					ModelParameters.alternating  = ( Integer.parseInt(result1[4]) == 0)?   false  :  true;
+					ModelParameters.minEntry  =( Integer.parseInt(result1[5]) <= 0)?   minEntry  :  Integer.parseInt(result1[5]);
+					ModelParameters.maxEntry  =( Integer.parseInt(result1[6]) <= 0)?   maxEntry  :  Integer.parseInt(result1[6]);
+					ModelParameters.minRoad   =( Double.parseDouble(result1[7]) <= 0)?   minRoad   :  Double.parseDouble(result1[7]);
+					ModelParameters.maxRoad   =( Double.parseDouble(result1[8]) <= 0)?   maxRoad   :  Double.parseDouble(result1[8]);
+					ModelParameters.minCarLength   =( Double.parseDouble(result1[9]) <= 0)?   minCarLength   :  Double.parseDouble(result1[9]);
+					ModelParameters.maxCarLength   =( Double.parseDouble(result1[10]) <= 0)?   maxCarLength   :  Double.parseDouble(result1[10]);
+					ModelParameters.minCarVelocity   =( Double.parseDouble(result1[11]) <= 0)?   minCarVelocity   :  Double.parseDouble(result1[11]);
+					ModelParameters.maxCarVelocity   =( Double.parseDouble(result1[12]) <= 0)?   maxCarVelocity   :  Double.parseDouble(result1[12]);
+					ModelParameters.stopDistMin   =( Double.parseDouble(result1[13]) <= 0)?   stopDistMin   :  Double.parseDouble(result1[13]);
+					ModelParameters.stopDistMax   =( Double.parseDouble(result1[14]) <= 0)?   stopDistMax   :  Double.parseDouble(result1[14]);
+					ModelParameters.brakeDistMin   =( Double.parseDouble(result1[15]) <= 0)?   brakeDistMin   :  Double.parseDouble(result1[15]);
+					ModelParameters.brakeDistMax   =( Double.parseDouble(result1[16]) <= 0)?   brakeDistMax   :  Double.parseDouble(result1[16]);
+					ModelParameters.minGreen   =( Double.parseDouble(result1[17]) <= 0)?   minGreen   :  Double.parseDouble(result1[17]);
+					ModelParameters.maxGreen   =( Double.parseDouble(result1[18]) <= 0)?   maxGreen   :  Double.parseDouble(result1[18]);
+					ModelParameters.minYellow   =( Double.parseDouble(result1[19]) <= 0)?   minYellow   :  Double.parseDouble(result1[19]);
+					ModelParameters.maxYellow   =( Double.parseDouble(result1[20]) <= 0)?   maxYellow   :  Double.parseDouble(result1[20]);
 
 
 

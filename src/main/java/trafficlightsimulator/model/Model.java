@@ -44,8 +44,8 @@ public class Model extends Observable {
 	 */
 	public Model(AnimatorBuilder builder) {
 		
-		int rows = MP.numRows;
-		int columns = MP.numCols;
+		int rows = ModelParameters.numRows;
+		int columns = ModelParameters.numCols;
 		if (rows < 0 || columns < 0 || (rows == 0 && columns == 0)) {
 			throw new IllegalArgumentException();
 		}
@@ -66,7 +66,7 @@ public class Model extends Observable {
 		if (disposed)
 			throw new IllegalStateException();
 		
-		double stepSize = MP.timeStep;
+		double stepSize = ModelParameters.timeStep;
 		for (double time= 0; time<duration; time+= stepSize) {
 //			time++;
 			
@@ -115,7 +115,7 @@ public class Model extends Observable {
 		
 		makeLights				(rows, columns, builder, intersections);
 		
-		boolean alternating 	= MP.alternating;
+		boolean alternating 	= ModelParameters.alternating;
 		makeVerticalStreets 	(rows, columns, builder, intersections, sources, roads, alternating);
 		makeHorizontalStreets	(rows, columns, builder, intersections, sources, roads, alternating);
 

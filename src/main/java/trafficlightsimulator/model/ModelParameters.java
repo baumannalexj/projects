@@ -1,11 +1,11 @@
-package myproject.model;
+package trafficlightsimulator.model;
 
 /**
  * Static class for model parameters.
  */
-public class MP {
+public class ModelParameters {
 	
-	private MP() {}
+	private ModelParameters() {}
 	
 	/** Length of cars, in meters */
 	public static double carLength = 10;

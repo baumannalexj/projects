@@ -7,7 +7,7 @@ import java.util.List;
 import trafficlightsimulator.model.AnimatorBuilder;
 import trafficlightsimulator.model.Car;
 import trafficlightsimulator.model.Light;
-import trafficlightsimulator.model.MP;
+import trafficlightsimulator.model.ModelParameters;
 import trafficlightsimulator.model.Road;
 import trafficlightsimulator.util.Animator;
 import trafficlightsimulator.util.SwingAnimator;
@@ -24,32 +24,32 @@ public class SwingAnimatorBuilder implements AnimatorBuilder {
 	public Animator getAnimator() {
 		if (painter == null) { throw new IllegalStateException(); }
 		Animator returnValue = new SwingAnimator(painter, "Traffic Simulator",
-				VP.displayWidth , VP.displayHeight, VP.displayDelay);
+				VisualizationParameters.displayWidth , VisualizationParameters.displayHeight, VisualizationParameters.displayDelay);
 		painter = null;
 		return returnValue;
 	}
-	private static double skipInit = VP.gap;
-	private static double skipRoad = VP.gap + MP.roadLength;
-	private static double skipCar = VP.gap + VP.elementWidth +1;
+	private static double skipInit = VisualizationParameters.gap;
+	private static double skipRoad = VisualizationParameters.gap + ModelParameters.roadLength;
+	private static double skipCar = VisualizationParameters.gap + VisualizationParameters.elementWidth +1;
 	private static double skipRoadCar = skipRoad + skipCar;
 	public void addLight(Light d, int i, int j) {
 		double x = skipInit + skipRoad + j*skipRoadCar;
 		double y = skipInit + skipRoad + i*skipRoadCar;
-		Translator t = new TranslatorWE(x, y, MP.carLength, VP.elementWidth, VP.scaleFactor);
+		Translator t = new TranslatorWE(x, y, ModelParameters.carLength, VisualizationParameters.elementWidth, VisualizationParameters.scaleFactor);
 		painter.addLight(d,t);
 	}
 	public void addHorizontalRoad(Road l, int i, int j, boolean eastToWest) {
 		double x = skipInit + j*skipRoadCar;
 		double y = skipInit + skipRoad + i*skipRoadCar;
-		Translator t = eastToWest ? new TranslatorEW(x, y,  MP.roadLength, VP.elementWidth, VP.scaleFactor)
-				: new TranslatorWE(x, y, MP.roadLength , VP.elementWidth, VP.scaleFactor);
+		Translator t = eastToWest ? new TranslatorEW(x, y,  ModelParameters.roadLength, VisualizationParameters.elementWidth, VisualizationParameters.scaleFactor)
+				: new TranslatorWE(x, y, ModelParameters.roadLength , VisualizationParameters.elementWidth, VisualizationParameters.scaleFactor);
 		painter.addRoad(l,t);
 	}
 	public void addVerticalRoad(Road l, int i, int j, boolean southToNorth) {
 		double x = skipInit + skipRoad + j*skipRoadCar;
 		double y = skipInit + i*skipRoadCar;
-		Translator t = southToNorth ? new TranslatorSN(x, y,  MP.roadLength , VP.elementWidth,  VP.scaleFactor)
-				: new TranslatorNS(x, y,  MP.roadLength , VP.elementWidth, VP.scaleFactor);
+		Translator t = southToNorth ? new TranslatorSN(x, y,  ModelParameters.roadLength , VisualizationParameters.elementWidth,  VisualizationParameters.scaleFactor)
+				: new TranslatorNS(x, y,  ModelParameters.roadLength , VisualizationParameters.elementWidth, VisualizationParameters.scaleFactor);
 		painter.addRoad(l,t);
 	}
 
@@ -102,12 +102,12 @@ public class SwingAnimatorBuilder implements AnimatorBuilder {
 				else
 					throw new IllegalStateException("NOT ACCEPTABLE COLOR STATE");
 				
-				XGraphics.fillOval(g, e.t, 0, 0, MP.carLength, VP.elementWidth);
+				XGraphics.fillOval(g, e.t, 0, 0, ModelParameters.carLength, VisualizationParameters.elementWidth);
 			}
 			java.awt.Color roadColor = new Color(200,200,200);
 			g.setColor(roadColor); // instead of black
 			for (Element<Road> e : roadElements) {
-				XGraphics.fillRect(g, e.t, 0, 0, MP.roadLength, VP.elementWidth);
+				XGraphics.fillRect(g, e.t, 0, 0, ModelParameters.roadLength, VisualizationParameters.elementWidth);
 			}
 
 			// Then draw the foreground elements
@@ -115,9 +115,9 @@ public class SwingAnimatorBuilder implements AnimatorBuilder {
 				// iterate through a copy because e.x.getCars() may change during iteration...
 				for (Car d : e.x.getCars().toArray(new Car[0])) {
 					g.setColor(d.getColor());
-//					XGraphics.fillOval(g, e.t, d.getPosition(), 0, MP.carLength, VP.elementWidth); // TODO change to d.getLength
-//					XGraphics.fillOval(g, e.t, d.getPaintPosition(), 0, d.getLength(), VP.elementWidth);
-					XGraphics.fillOval(g, e.t, d.getPaintPosition(), 0, d.getLength()*MP.roadLength/d.getRoad().length, VP.elementWidth);
+//					XGraphics.fillOval(g, e.t, d.getPosition(), 0, ModelParameters.carLength, VisualizationParameters.elementWidth); // TODO change to d.getLength
+//					XGraphics.fillOval(g, e.t, d.getPaintPosition(), 0, d.getLength(), VisualizationParameters.elementWidth);
+					XGraphics.fillOval(g, e.t, d.getPaintPosition(), 0, d.getLength()* ModelParameters.roadLength/d.getRoad().length, VisualizationParameters.elementWidth);
 
 
 				}
