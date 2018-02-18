@@ -103,7 +103,8 @@ public class Car implements Agent {
 			if (currentRoad.getNextRoad() == null) distToNextCar = 999*length;
 			else{
 				nextCar = currentRoad.getNextRoad().getLastCar();
-				distToNextCar = (nextCar == null) ? 2*MP.roadLength*length
+				distToNextCar = (nextCar == null)
+						? 2*MP.roadLength*length
 						: -currentVelocity + (currentRoad.length+nextCar.position - .5*nextCar.length) - (position + .5*length);
 
 			}
