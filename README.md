@@ -4,5 +4,7 @@ Traffic Simulator - exercise use of design patterns (mostly strategy pattern), c
 requires >= Java 1.7
 
 To run:
+
 `mvn package`
+
 `java -jar main.jar`
