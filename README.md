@@ -5,6 +5,6 @@ requires >= Java 1.7
 
 To run:
 
-`mvn package`
+`mvn compile`
 
-`java -jar main.jar`
+`java Main.java`
